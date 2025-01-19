@@ -23,7 +23,7 @@ class Category(PublishedModel, CreatedAtModel, TitleModel):
     description = models.TextField(verbose_name="Описание")
     slug = models.SlugField(
         unique=True,
-        verbose_name="Идентификатор"
+        verbose_name="Идентификатор",
         help_text="Идентификатор страницы для URL; разрешены символы латиницы, цифры, дефис и подчёркивание.",
     )
 

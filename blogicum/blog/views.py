@@ -61,5 +61,5 @@ def category(request, category_slug):
     return render(
         request=request,
         template_name=template,
-        context={"category": category_obj, "post_list": post_list[:5]},
+        context={"category": category_obj, "post_list": post_list},
     )
