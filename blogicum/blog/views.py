@@ -25,16 +25,18 @@ def index(request):
 
 
 def post_detail(request, pk):
-    posts_map = {}
-
-    if not posts_map.get(pk):
-        raise Http404(f"Пост с ID:{pk} не найден!")
-
+    post = get_object_or_404(
+        Post,
+        pk=pk,
+        is_published=True,
+        pub_date__lte=timezone.now(),
+        category__is_published=True,
+    )
     template = "blog/detail.html"
     return render(
         request=request,
         template_name=template,
-        context={"post": posts_map[pk]},
+        context={"post": post},
     )
 
 
