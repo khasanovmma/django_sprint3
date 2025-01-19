@@ -1,10 +1,27 @@
 from django.shortcuts import render
 from django.http import Http404
+from django.utils import timezone
+
+from .models import Post
 
 
 def index(request):
     template = "blog/index.html"
-    return render(request=request, template_name=template, context={})
+    post_list = (
+        Post.objects.filter(
+            is_published=True,
+            pub_date__lte=timezone.now(),
+            category__is_published=True,
+        )
+        .select_related("category")
+        .order_by("-pub_date")
+    )
+
+    return render(
+        request=request,
+        template_name=template,
+        context={"post_list": post_list[:5]},
+    )
 
 
 def post_detail(request, pk):
