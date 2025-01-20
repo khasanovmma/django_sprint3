@@ -8,7 +8,10 @@ User = get_user_model()
 
 
 class Location(PublishedCreatedAtModel):
-    name = models.CharField(max_length=MAX_NAME_LENGTH, verbose_name="Название места")
+    name = models.CharField(
+        max_length=MAX_NAME_LENGTH,
+        verbose_name="Название места",
+    )
 
     class Meta:
         verbose_name = "местоположение"
@@ -19,7 +22,10 @@ class Location(PublishedCreatedAtModel):
 
 
 class Category(PublishedCreatedAtModel):
-    title = models.CharField(max_length=MAX_NAME_LENGTH, verbose_name="Заголовок")
+    title = models.CharField(
+        max_length=MAX_NAME_LENGTH,
+        verbose_name="Заголовок",
+    )
     description = models.TextField(verbose_name="Описание")
     slug = models.SlugField(
         unique=True,
@@ -39,7 +45,10 @@ class Category(PublishedCreatedAtModel):
 
 
 class Post(PublishedCreatedAtModel):
-    title = models.CharField(max_length=MAX_NAME_LENGTH, verbose_name="Заголовок")
+    title = models.CharField(
+        max_length=MAX_NAME_LENGTH,
+        verbose_name="Заголовок",
+    )
     text = models.TextField(verbose_name="Текст")
     pub_date = models.DateTimeField(
         verbose_name="Дата и время публикации",
