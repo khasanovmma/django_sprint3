@@ -1,6 +1,6 @@
 from django.shortcuts import get_object_or_404, render
 
-from core.constants import POSTS_LIMIT
+from blogicum.blog.constants import POSTS_LIMIT
 from .models import Category
 from .selectors import get_active_post_queryset
 
